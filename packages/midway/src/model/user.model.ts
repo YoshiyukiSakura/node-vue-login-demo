@@ -1,7 +1,7 @@
-import {Inject, Provide} from '@midwayjs/decorator';
-import {InjectEntityModel} from '@midwayjs/orm';
-import {UserEntity} from '../entity/user.entity';
-import {Repository} from 'typeorm';
+import { Inject, Provide } from '@midwayjs/decorator';
+import { InjectEntityModel } from '@midwayjs/orm';
+import { UserEntity } from '../entity/user.entity';
+import { Repository } from 'typeorm';
 
 @Provide()
 export class UserModel {
@@ -14,15 +14,18 @@ export class UserModel {
    * @param username {String} 用户名
    * @param password {String} 用户密码
    */
-  async getUserByUsernameAndPassword(username: string, password: string): Promise<UserEntity> {
-    return await this.userModel.findOne({where: {username, password}});
+  async getUserByUsernameAndPassword(
+    username: string,
+    password: string
+  ): Promise<UserEntity> {
+    return await this.userModel.findOne({ where: { username, password } });
   }
 
   // save
   async saveUserEntity() {
     let user = new UserEntity();
-    user.username = 'Me and Bears';
-    user.password = 'I am near polar bears';
+    user.username = 'jack';
+    user.password = 'redballoon';
 
     // save entity
     const userResult = await this.userModel.save(user);
