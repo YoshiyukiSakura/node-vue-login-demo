@@ -2,6 +2,7 @@ import { Inject, Provide } from '@midwayjs/decorator';
 import { InjectEntityModel } from '@midwayjs/orm';
 import { UserEntity } from '../entity/user.entity';
 import { Repository } from 'typeorm';
+import * as MD5 from 'crypto-js/md5';
 
 @Provide()
 export class UserModel {
@@ -25,7 +26,7 @@ export class UserModel {
   async saveUserEntity() {
     let user = new UserEntity();
     user.username = 'jack';
-    user.password = 'redballoon';
+    user.password = MD5('redballoon').toString();
 
     // save entity
     const userResult = await this.userModel.save(user);
