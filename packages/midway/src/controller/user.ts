@@ -35,6 +35,11 @@ export class UserController {
       username,
       password
     );
+
+    //test throttle
+    // const waitFor = delay => new Promise(resolve => setTimeout(resolve, delay));
+    // await waitFor(1000 + Math.random() * 1000);
+
     if (!user) {
       return {
         code: 400,
